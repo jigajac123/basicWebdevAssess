@@ -149,12 +149,8 @@ function drawTodos(todos) {
     drawCreateNewTodo();
 
     let todosElement = document.getElementById("todos");
-    let count = 0;
     for (const todo of todos) {
-        if (count < 15) {
-            todosElement.appendChild(generateTodo(todo));
-            count++;
-        }
+        todosElement.appendChild(generateTodo(todo));
     }
 
     masonry();
@@ -198,6 +194,10 @@ function generateTodo(todo) {
     let todoCardWrapperElement = document.createElement("div");
     todoCardWrapperElement.id = todo.id + "_todo";
     todoCardWrapperElement.className = "col-sm-6 col-md-4 col-lg-3 py-3";
+
+    if (todo.done) {
+        todoCardWrapperElement.classList.add("completed");
+    }
 
     let todoCardElement = document.createElement("div");
     if (todo.new) {
@@ -247,8 +247,9 @@ function generateTodo(todo) {
 
     let todoCardCheckButtonElement = document.createElement("a");
     todoCardCheckButtonElement.id = todo.id + "_complete";
+    todoCardCheckButtonElement.style.display = todo.done ? "none" : "block";
     todoCardCheckButtonElement.className = "ms-1 float-start text-success";
-    todoCardCheckButtonElement.innerHTML = `<i class="bi bi-check-square"></i>`;
+    todoCardCheckButtonElement.innerHTML = `<i class="bi bi-square"></i>`;
     todoCardCheckButtonElement.addEventListener(
         'click',
         () => {
@@ -258,9 +259,9 @@ function generateTodo(todo) {
 
     let todoCardUncheckButtonElement = document.createElement("a");
     todoCardUncheckButtonElement.id = todo.id + "_incomplete";
-    todoCardUncheckButtonElement.style.display = "none";
+    todoCardUncheckButtonElement.style.display = todo.done ? "block" : "none";
     todoCardUncheckButtonElement.className = "ms-1 float-start text-secondary";
-    todoCardUncheckButtonElement.innerHTML = `<i class="bi bi-square"></i>`;
+    todoCardUncheckButtonElement.innerHTML = `<i class="bi bi-check-square"></i>`;
     todoCardUncheckButtonElement.addEventListener(
         'click',
         () => {
