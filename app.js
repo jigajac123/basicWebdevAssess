@@ -20,7 +20,8 @@ function deleteTodo(todo) {
 function getTodos() {
     fetch('/api/todo')
     .then(response => response.json())
-    .then(json => drawTodos(json));
+    .then(json => drawTodos(json))
+    .catch(err => appendToast('Failed to retrieve todos...'));
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -37,10 +38,10 @@ function editTodo(todo) {
 
 function setEditState(todo, editing) {
     let titleElement = document.getElementById(todo.id + "_title");
-    let bodyElement = document.getElementById(todo.id + "_body");
+    let bodyElement = document.getElementById(todo.id + "_description");
 
     let titleInputElement = document.getElementById(todo.id + "_title_edit");
-    let bodyInputElement = document.getElementById(todo.id + "_body_edit");
+    let bodyInputElement = document.getElementById(todo.id + "_description_edit");
 
     let editTodo = document.getElementById(todo.id + "_edit");
     let deleteTodo = document.getElementById(todo.id + "_delete");
@@ -68,10 +69,10 @@ function setEditState(todo, editing) {
 
 function editSave(todo) {
     let titleElement = document.getElementById(todo.id + "_title");
-    let bodyElement = document.getElementById(todo.id + "_body");
+    let bodyElement = document.getElementById(todo.id + "_description");
 
     let titleInputElement = document.getElementById(todo.id + "_title_edit");
-    let bodyInputElement = document.getElementById(todo.id + "_body_edit");
+    let bodyInputElement = document.getElementById(todo.id + "_description_edit");
     if (typeof titleInputElement.value === "undefined" || titleInputElement.value.length == 0) {
         titleInputElement.classList.add('is-invalid');
         titleInputElement.classList.add('shake-horizontal');
@@ -79,7 +80,7 @@ function editSave(todo) {
     }
     
     todo.title = titleElement.innerText = titleInputElement.value;
-    todo.body = bodyElement.innerText = bodyInputElement.value;
+    todo.description = bodyElement.innerText = bodyInputElement.value;
 
     if (todo.new) {
         delete todo.new;
@@ -103,7 +104,7 @@ function editCancel(todo) {
 
 function createTodo() {
     let todosElement = document.getElementById("todos");
-    let todo = {id: generateId(), title: '', body: '', new: true};
+    let todo = {id: generateId(), title: '', description: '', done: false, new: true};
     todosElement.insertBefore(generateTodo(todo), todosElement.firstChild.nextSibling.nextSibling);
     setEditState(todo, true);
     masonry();
@@ -231,16 +232,16 @@ function generateTodo(todo) {
 
     let todoCardTextElement = document.createElement("p");
     todoCardTextElement.className = "card-text";
-    todoCardTextElement.innerText = todo.body;
-    todoCardTextElement.id = todo.id + "_body";
+    todoCardTextElement.innerText = todo.description;
+    todoCardTextElement.id = todo.id + "_description";
 
     let todoCardTextInputElement = document.createElement("textarea");
-    todoCardTextInputElement.id = todo.id + "_body_edit";
+    todoCardTextInputElement.id = todo.id + "_description_edit";
     todoCardTextInputElement.className = "form-control mb-3";
     todoCardTextInputElement.style.display = "none";
     todoCardTextInputElement.style.resize = "none";
     todoCardTextInputElement.rows = "5";
-    todoCardTextInputElement.value = todo.body;
+    todoCardTextInputElement.value = todo.description;
     todoCardTextInputElement.placeholder = "Description";
     
     let todoCardButtonWrapperElement = document.createElement("div");
@@ -341,8 +342,41 @@ function generateId() {
 	let result  = '';
 	const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 	const charactersLength = characters.length;
-	for (let i = 0; i < 6; i++ ) {
+	for (let i = 0; i < 10; i++ ) {
 		result += characters.charAt(Math.floor(Math.random() * charactersLength));
 	}
 	return result;
+}
+
+function appendToast(message) {
+    let toastContainerElement = document.getElementById('toasts');
+
+    let toastElement = document.createElement('div');
+    toastElement.className = "toast show";
+    toastElement.setAttribute('role', 'alert');
+    toastElement.setAttribute('aria-live', 'assertive');
+    toastElement.setAttribute('aria-live', 'assertive');
+    toastElement.setAttribute('aria-atomic', 'true');
+
+    let toastHeaderElement = document.createElement('div');
+    toastHeaderElement.className = "toast-header";
+    toastHeaderElement.innerHTML = `
+        <strong class="me-auto">Message</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    `;
+
+    let toastBodyElement = document.createElement('div');
+    toastBodyElement.className = "toast-body";
+    toastBodyElement.innerText = message;
+
+    toastElement.appendChild(toastHeaderElement);
+    toastElement.appendChild(toastBodyElement);
+
+    toastContainerElement.appendChild(toastElement);
+
+    // init toasts
+    let toastElementList = [].slice.call(document.querySelectorAll('.toast'))
+    toastElementList.map(function (toastEl) {
+        return new bootstrap.Toast(toastEl, {})
+    })
 }
