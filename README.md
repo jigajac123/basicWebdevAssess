@@ -2,10 +2,13 @@
 
 ## Welcome
 Hi there potential future stratuSolve developer. This assessment is meant to be a little test to gauge your developerment and problem solving skills. 
-A big part of being a software developer is to be able to quickly get a feeling for a program and understand the flow. 
+A big part of being a software developer is to be able to quickly get a feeling for a program and understand the flow of data. 
+
+### Scenario
+You are a freelance developer that received a partially completed TODO list app built by another (imperfect and time constraint) developer. The reading of data from the backend to frontend seems to be working but the creating, updating and deleting of data was not done. Your assignment is to complete this app for the client.
 
 ## Introduction
-This is a partially built TODO list tracket. The stack looks something like this:
+The stack looks something like this:
 
 Front End
 - HTML
@@ -17,4 +20,7 @@ Front End
 Back End
 - PHP
 - RESTful
+
+
+
 
