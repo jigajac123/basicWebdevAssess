@@ -46,4 +46,6 @@ class TodoController {
         // implement your code here
         return true;
     }
+
+    // add any additional functions you need
 }
