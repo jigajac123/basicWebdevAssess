@@ -21,7 +21,7 @@ function getTodos() {
     fetch('/api/todo')
     .then(response => response.json())
     .then(json => drawTodos(json))
-    .catch(err => appendToast('Failed to retrieve todos...'));
+    .catch(err => showToastMessage('Failed to retrieve todos...'));
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -348,7 +348,7 @@ function generateId() {
 	return result;
 }
 
-function appendToast(message) {
+function showToastMessage(message) {
     let toastContainerElement = document.getElementById('toasts');
 
     let toastElement = document.createElement('div');

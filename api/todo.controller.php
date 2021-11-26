@@ -32,6 +32,11 @@ class TodoController {
         return false;
     }
 
+    public function create(Todo $todo) : bool {
+        // implement your code here
+        return true;
+    }
+
     public function update(string $id, Todo $todo) : bool {
         // implement your code here
         return true;

@@ -1,7 +1,6 @@
 <?php
 try {
     require_once("../todo.controller.php");
-
     $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     $uri = explode( '/', $uri);
     $requestType = $_SERVER['REQUEST_METHOD'];
