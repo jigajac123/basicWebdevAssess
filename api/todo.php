@@ -1,16 +1,19 @@
 <?php
 try {
-    require_once("../todo.controller.php");
-    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    $uri = explode( '/', $uri);
-    $requestType = $_SERVER['REQUEST_METHOD'];
+    require_once("todo.controller.php");
     
+    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $path = explode( '/', $uri);
+    $requestType = $_SERVER['REQUEST_METHOD'];
+    $body = file_get_contents('php://input');
+
     $controller = new TodoController();
     
     switch($requestType) {
         case 'GET':
-            if (isset($uri[3]) && strlen($uri[3])) {
-                $todo = $controller->load($uri[3]);
+            if (isset($path[3]) && strlen($path[3])) {
+                $id = $path[3];
+                $todo = $controller->load($id);
                 if ($todo) {
                     http_response_code(200);
                     die(json_encode($todo));

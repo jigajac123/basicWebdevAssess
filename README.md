@@ -29,7 +29,7 @@ Broadly speaking, you should enable data persistance. You should write the PHP a
 ### Files
 You are expected to update the following files:
 
-- `api/todo/index.php`
+- `api/todo.php`
 - `api/todo.controller.php`
 - `assets/js/app.js`
 
