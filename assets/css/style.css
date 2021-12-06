@@ -1,17 +1,42 @@
+body {
+    background-color: #fafafa;
+}
+
+h1 {
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    width: 100%;
+    background-image: linear-gradient(to right, #2C6AC2 , #01429E);
+}
+
+.form-control {
+    border: 1px solid #eeeeee;
+    background-color: #eeeeee;
+    font-style: italic;
+}
+
+.card {
+    border: 1px solid #2C6AC2;
+}
+
 .completed {
     opacity: 40%;
     text-decoration: line-through;
+}
+
+.completed > .card {
+    border: 1px solid #CCC;
+    background-color: #e6e4e4;
 }
 
 .new-todo {
     border-style: dashed;
     text-align: center;
     font-size: 3rem;
+    color: #2C6AC2;
 }
 
-a {
-    opacity: 0.6;
-}
 
 a:hover {
     cursor: pointer;
@@ -21,8 +46,7 @@ a:hover {
 
 .new-todo:hover {
     cursor: pointer;
-    -webkit-animation: pulsate-fwd 0.5s ease-in-out both;
-    animation: pulsate-fwd 0.5s ease-in-out both;
+    background-color: #2c6bc21f;
 }
 
 .slide-in-top {

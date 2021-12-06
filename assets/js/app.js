@@ -261,7 +261,7 @@ function generateTodo(todo) {
     let todoCardUncheckButtonElement = document.createElement("a");
     todoCardUncheckButtonElement.id = todo.id + "_incomplete";
     todoCardUncheckButtonElement.style.display = todo.done ? "block" : "none";
-    todoCardUncheckButtonElement.className = "ms-1 float-start text-secondary";
+    todoCardUncheckButtonElement.className = "ms-1 float-start text-success";
     todoCardUncheckButtonElement.innerHTML = `<i class="bi bi-check-square"></i>`;
     todoCardUncheckButtonElement.addEventListener(
         'click',

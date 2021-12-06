@@ -31,7 +31,7 @@ You are expected to update the following files:
 
 - `api/todo/index.php`
 - `api/todo.controller.php`
-- `app.js`
+- `assets/js/app.js`
 
 ### Evaluation
 The changes you make will be evaluated by one of our senior developers who will look at the following code criteria:
@@ -60,7 +60,7 @@ Using the included `docker-compose.yml` file with Docker and Docker Compose can 
 - Docker Compose https://docs.docker.com/compose/install/
 
 ### Sharing your solution
-After you are done and happy with the app, you should share your **public** GitHub repo containing the solution with your stratuSolve contact. Be sure to actively use the repo while developing as to have a representative commit history.
+After you are done and happy with the app, you should share your **public** GitHub repo containing the solution with your stratuSolve contact. Be sure to actively use your repo while developing to have a representative commit history.
 
 ---
 ## In closing
