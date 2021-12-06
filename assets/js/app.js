@@ -139,11 +139,17 @@ function incompleteTodo(todo) {
 
 function removeTodo(todo) {
     let todoCardElement = document.getElementById(todo.id + "_todo");
-    todoCardElement.remove();
-    masonry();
-    if (!todo.new) {
-        deleteTodo(todo);
-    }
+    todoCardElement.classList.add("swing-out-top-bck");
+    setTimeout(
+        () => {
+            todoCardElement.remove();
+            masonry();
+            if (!todo.new) {
+                deleteTodo(todo);
+            }
+        },
+        510
+    )
 }
 
 function drawTodos(todos) {
@@ -202,7 +208,7 @@ function generateTodo(todo) {
 
     let todoCardElement = document.createElement("div");
     if (todo.new) {
-        todoCardElement.className = "card slide-in-top";
+        todoCardElement.className = "card swing-in-top-fwd";
     } else {
         todoCardElement.className = "card";
     }
