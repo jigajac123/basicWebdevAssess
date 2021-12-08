@@ -24,14 +24,14 @@ The technology stack looks something like this:
 
 ---
 ## Task
-Broadly speaking, you should enable data persistance. You should write the PHP and JavaScript code creating, updating and deleting of TODO items.
+Broadly speaking, you should enable data persistance. You should write the PHP and JavaScript code for creating, updating and deleting of TODO items.
 
 ### Files
 You are expected to update the following files:
 
 - `api/todo.php`
 - `api/todo.controller.php`
-- `assets/js/app.js`
+- `app.js`
 
 ### Evaluation
 The changes you make will be evaluated by one of our senior developers who will look at the following code criteria:
