@@ -19,7 +19,7 @@ The technology stack looks something like this:
 - Fetch API
 
 *Back End*
-- PHP
+- PHP 8
 - RESTful API
 
 ---
