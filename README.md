@@ -43,7 +43,9 @@ The changes you make will be evaluated by one of our senior developers who will 
 - Performance
 
 ### Getting started
-You will need some way to run an **Apache** web server and **PHP 8.0+** on your local machine for development. Suggested ways:
+You will need some way to run an **Apache** web server and **PHP 8.0+** on your local machine for development. Note that if you have never worked with PHP that this might take some time to get right.
+
+Suggested ways:
 
 *LAMP / MAMP Stack*
 
