@@ -18,7 +18,7 @@ function deleteTodo(todo) {
 
 // example using the FETCH API to do a GET request
 function getTodos() {
-    fetch('/api/todo')
+    fetch(window.location.href + 'api/todo')
     .then(response => response.json())
     .then(json => drawTodos(json))
     .catch(error => showToastMessage('Failed to retrieve todos...'));

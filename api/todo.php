@@ -6,13 +6,14 @@ try {
     $path = explode( '/', $uri);
     $requestType = $_SERVER['REQUEST_METHOD'];
     $body = file_get_contents('php://input');
+    $pathCount = count($path);
 
     $controller = new TodoController();
     
     switch($requestType) {
         case 'GET':
-            if (isset($path[3]) && strlen($path[3])) {
-                $id = $path[3];
+            if ($path[$pathCount - 2] == 'todo' && isset($path[$pathCount - 1]) && strlen($path[$pathCount - 1])) {
+                $id = $path[$pathCount - 1];
                 $todo = $controller->load($id);
                 if ($todo) {
                     http_response_code(200);
