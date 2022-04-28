@@ -24,7 +24,7 @@ The technology stack looks something like this:
 
 ---
 ## Task
-Broadly speaking, you should enable data persistance. You should write the PHP and JavaScript code for creating, updating and deleting of TODO items.
+Broadly speaking, you should enable data persistance. You should write the PHP and JavaScript code for creating, updating and deleting of TODO items. You need to use the provided JSON file,`api/todo.json`, as a simple file-based database for the back-end.
 
 ### Files
 You are expected to update the following files:
