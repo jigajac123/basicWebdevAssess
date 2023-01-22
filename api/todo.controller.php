@@ -32,7 +32,7 @@ class TodoController {
         return false;
     }
 
-    public function create(Todo $todo) : bool {
+    public function create(Todo $data) : bool {
         // implement your code here
 
         if (!empty($data)){
