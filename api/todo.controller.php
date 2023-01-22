@@ -47,8 +47,29 @@ class TodoController {
         return true;
     }
 
-    public function update(string $id, Todo $todo) : bool {
+    public function update(string $id, Todo $item) : bool {
         // implement your code here
+
+        if(isset($id) && !empty($item)){
+
+            foreach($this->todos as $field=>$value){
+
+                if($value->id == $id){
+                     
+                    foreach($item as $key=>$input){
+                    
+                        if($input != $value){
+                            $this->todos[$field] = $item;
+                        }
+    
+                    }
+                }
+           }
+
+           file_put_contents('todo.json', json_encode($this->todos, JSON_PRETTY_PRINT| JSON_UNESCAPED_UNICODE));
+         
+        }
+        
         return true;
     }
 

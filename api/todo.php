@@ -43,6 +43,22 @@ try {
             break;
         case 'PUT':
             //implement your code here
+
+            $data = json_decode(file_get_contents('php://input'));
+            
+            if(!empty($data) ){
+                
+                if(isset($data->id)){
+                $controller->update($data->id, new Todo($data->id, $data->title, $data->description, $data->done));
+                http_response_code(200);
+                }
+                else  http_response_code(404);
+               
+            }
+            else{
+               http_response_code(400);
+            }
+
             break;
         case 'DELETE':
             //implement your code here
