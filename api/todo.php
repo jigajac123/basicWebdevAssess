@@ -28,6 +28,18 @@ try {
             break;
         case 'POST':
             //implement your code here
+
+            $dt = json_decode(file_get_contents('php://input'));
+            
+            if($dt != null){
+               
+               $controller->create(new Todo($dt->id, $dt->title, $dt->description, $dt->done));
+               http_response_code(201);
+            }
+            else{
+               http_response_code(400);
+            }
+
             break;
         case 'PUT':
             //implement your code here

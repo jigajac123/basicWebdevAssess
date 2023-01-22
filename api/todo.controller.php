@@ -34,6 +34,16 @@ class TodoController {
 
     public function create(Todo $todo) : bool {
         // implement your code here
+
+        if (!empty($data)){
+
+            array_push($this->todos, $data);
+            $data_to_save=$this->todos;
+        
+            file_put_contents('todo.json', json_encode($data_to_save, JSON_PRETTY_PRINT| JSON_UNESCAPED_UNICODE));
+           
+        }
+           
         return true;
     }
 
