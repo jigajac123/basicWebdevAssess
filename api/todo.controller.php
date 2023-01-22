@@ -75,6 +75,25 @@ class TodoController {
 
     public function delete(string $id) : bool {
         // implement your code here
+
+        if(isset($id)){
+            $num=-1;
+             foreach($this->todos as $field=>$value){
+                 $num +=1;
+                 if($value->id == $id){ 
+                     if(isset($num)){
+                      unset($this->todos[$num]);
+                     }
+                     else{
+                         return false;
+                     }
+                    
+                 }
+            }
+ 
+            file_put_contents('todo.json', json_encode($this->todos, JSON_PRETTY_PRINT| JSON_UNESCAPED_UNICODE));
+         }
+         
         return true;
     }
 

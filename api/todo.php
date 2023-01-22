@@ -12,7 +12,7 @@ try {
     
     switch($requestType) {
         case 'GET':
-            if ($path[$pathCount - 2] == 'todo' && isset($path[$pathCount - 1]) && strlen($path[$pathCount - 1])) {
+            if ($path[$pathCount - 2] == 'todo.php' && isset($path[$pathCount - 1]) && strlen($path[$pathCount - 1])) {
                 $id = $path[$pathCount - 1];
                 $todo = $controller->load($id);
                 if ($todo) {
@@ -62,6 +62,18 @@ try {
             break;
         case 'DELETE':
             //implement your code here
+
+               
+            if ($path[$pathCount - 2] == 'todo.php' && isset($path[$pathCount - 1])) {
+
+                $id=$path[$pathCount - 1];
+                $controller->delete($id);
+                http_response_code(200);
+                
+              }
+              else{
+                  http_response_code(404);
+              }
             break;
         default:
             http_response_code(501);
